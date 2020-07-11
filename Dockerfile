@@ -1,7 +1,7 @@
 FROM node:lts as build-deps
 WORKDIR /frontend
 RUN echo "$PWD"
-RUN echo "$ls"
+RUN ls
 COPY ./frontend/package.json ./frontend/yarn.lock ./
 RUN yarn
 COPY ./frontend /frontend
@@ -17,27 +17,27 @@ FROM python:3.7
 
 WORKDIR /app/backend
 RUN echo "$PWD"
-RUN echo "$ls"
+RUN ls
 
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
 RUN pip3 install --upgrade pip -r requirements.txt
 
 # Install JS dependencies
-# WORKDIR /app/frontend
+WORKDIR /app/frontend
 
-# COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
-# CMD $HOME/.yarn/bin/yarn install
+COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
+CMD $HOME/.yarn/bin/yarn install
 
-# # Add the rest of the code
-# COPY . /app/
+# Add the rest of the code
+COPY . /app/
 
-# # Build static files
-# CMD $HOME/.yarn/bin/yarn build
+# Build static files
+CMD $HOME/.yarn/bin/yarn build
 
-# # Have to move all static files other than index.html to root/
-# # for whitenoise middleware
-# WORKDIR /app/frontend/build
+# Have to move all static files other than index.html to root/
+# for whitenoise middleware
+WORKDIR /app/frontend/build
 
 # CMD mkdir root && mv *.ico *.js *.json root
 
@@ -46,7 +46,7 @@ RUN pip3 install --upgrade pip -r requirements.txt
 
 WORKDIR /app
 RUN echo "$PWD"
-RUN echo "$ls"
+RUN ls
 
 COPY . .
 COPY --from=build-deps /frontend/build /app/frontend/build
@@ -54,14 +54,14 @@ COPY --from=build-deps /frontend/build /app/frontend/build
 WORKDIR /app/frontend/build
 
 RUN echo "$PWD"
-RUN echo "$ls"
+RUN ls
 RUN mkdir root && mv *.ico *.js *.json root
 RUN mkdir /app/staticfiles
 
 WORKDIR /app
 
 RUN echo "$PWD"
-RUN echo "$ls"
+RUN ls
 
 EXPOSE $PORT
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
@@ -72,6 +72,6 @@ CMD DJANGO_SETTINGS_MODULE=app.settings.production \
 WORKDIR /app/backend
 
 RUN echo "$PWD"
-RUN echo "$ls"
+RUN ls
 
 CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
