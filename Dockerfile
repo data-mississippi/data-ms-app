@@ -18,10 +18,8 @@ WORKDIR /app/frontend
 COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
 RUN $HOME/.yarn/bin/yarn install
 
-
 # Add the rest of the code
 COPY . /app/
-CMD ls /app/
 
 # Build static files
 RUN $HOME/.yarn/bin/yarn build
@@ -29,7 +27,6 @@ RUN $HOME/.yarn/bin/yarn build
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
 WORKDIR /app/frontend/build
-CMD ls
 
 RUN mkdir root && mv *.ico *.js *.json root
 
