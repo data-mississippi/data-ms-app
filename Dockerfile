@@ -10,7 +10,7 @@ WORKDIR /app/backend
 
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
-RUN pip install requirements.txt
+RUN pip install --upgrade -r requirements.txt
 
 # Install JS dependencies
 WORKDIR /app/frontend
