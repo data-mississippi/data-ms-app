@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM python:3.7
 
 # Install curl, node, & yarn
 RUN apt-get -y install curl \
