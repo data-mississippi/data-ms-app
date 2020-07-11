@@ -74,4 +74,4 @@ WORKDIR /app/backend
 RUN echo "$PWD"
 RUN ls
 
-CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
+CMD python3 manage.py runserver 0.0.0.0:$PORT
