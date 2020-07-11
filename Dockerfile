@@ -59,4 +59,4 @@ CMD DJANGO_SETTINGS_MODULE=app.settings.production \
 
 WORKDIR /app/backend
 
-CMD gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
+CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
