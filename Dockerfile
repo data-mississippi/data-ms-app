@@ -1,11 +1,11 @@
 FROM node:lts as build-deps
-WORKDIR /frontend
-RUN echo "$PWD"
-RUN ls
-COPY ./frontend/package.json ./frontend/yarn.lock ./
-RUN yarn
-COPY ./frontend /frontend
-RUN yarn build
+# WORKDIR /frontend
+# RUN echo "$PWD"
+# RUN ls
+# COPY ./frontend/package.json ./frontend/yarn.lock ./
+# RUN yarn
+# COPY ./frontend /frontend
+# RUN yarn build
 
 FROM python:3.7
 
@@ -39,26 +39,26 @@ CMD $HOME/.yarn/bin/yarn build
 # for whitenoise middleware
 WORKDIR /app/frontend/build
 
-# CMD mkdir root && mv *.ico *.js *.json root
+CMD mkdir root && mv *.ico *.js *.json root
 
-# # Collect static files
-# CMD mkdir /app/backend/staticfiles
+# Collect static files
+CMD mkdir /app/backend/staticfiles
 
 WORKDIR /app
 RUN echo "$PWD"
 RUN ls
 
-COPY . .
-COPY --from=build-deps /frontend/build /app/frontend/build
+# COPY . .
+# COPY --from=build-deps /frontend/build /app/frontend/build
 
-WORKDIR /app/frontend/build
+# WORKDIR /app/frontend/build
 
-RUN echo "$PWD"
-RUN ls
-RUN mkdir root && mv *.ico *.js *.json root
-RUN mkdir /app/staticfiles
+# RUN echo "$PWD"
+# RUN ls
+# RUN mkdir root && mv *.ico *.js *.json root
+# RUN mkdir /app/staticfiles
 
-WORKDIR /app
+# WORKDIR /app
 
 RUN echo "$PWD"
 RUN ls
