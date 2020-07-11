@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.7-slim
 
 # Install curl, node, & yarn
 RUN apt-get -y install curl \
@@ -10,8 +10,7 @@ WORKDIR /app/backend
 
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
-RUN sudo apt-get install python-pip
-RUN pip3 install --upgrade && pip -r requirements.txt
+RUN pip install requirements.txt
 
 # Install JS dependencies
 WORKDIR /app/frontend

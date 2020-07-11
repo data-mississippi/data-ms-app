@@ -70,3 +70,6 @@ We also need to run `heroku stack:set container` in the terminal to tell our Her
 
 
 --app=secret-dusk-91150
+`heroku update`
+
+https://stackoverflow.com/questions/59719175/where-to-run-collectstatic-when-deploying-django-app-to-heroku-using-docker
