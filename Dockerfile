@@ -1,7 +1,6 @@
 FROM python:3.7
 
 FROM node:14.1-alpine AS builder
-RUN npm install -g yarn
 # Install curl, node, & yarn
 # RUN apt-get -y install curl \
 #   && curl -sL https://deb.nodesource.com/setup_12.x | bash \
