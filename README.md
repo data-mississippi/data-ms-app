@@ -73,3 +73,28 @@ We also need to run `heroku stack:set container` in the terminal to tell our Her
 `heroku update`
 
 https://stackoverflow.com/questions/59719175/where-to-run-collectstatic-when-deploying-django-app-to-heroku-using-docker
+
+https://www.reddit.com/r/django/comments/grdk7z/django_docker_heroku_and_a_staticfiles_hell/
+
+https://stackoverflow.com/questions/62101834/django-static-files-are-not-loaded-when-deploying-on-heroku-using-docker-and-whi
+
+https://devcenter.heroku.com/articles/django-assets#collectstatic-during-builds
+
+
+
+`git push heroku master DEBUG=*`
+
+https://devcenter.heroku.com/articles/django-assets
+
+https://devcenter.heroku.com/articles/heroku-cli#troubleshooting
+
+https://testdriven.io/blog/deploying-django-to-heroku-with-docker/#whitenoise
+
+
+https://github.com/cfranklin11/docker-django-react/tree/production-heroku
+
+https://dev.to/englishcraig/docker-django-react-building-assets-and-deploying-to-heroku-24jh?signin=true
+
+
+tailwind
+https://daveceddia.com/tailwind-create-react-app/
