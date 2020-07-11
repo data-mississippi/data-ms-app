@@ -10,7 +10,7 @@ WORKDIR /app/backend
 
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
-RUN apt-get install python-pip
+RUN sudo apt-get install python-pip
 RUN pip3 install --upgrade && pip -r requirements.txt
 
 # Install JS dependencies
