@@ -28,10 +28,10 @@ CMD $HOME/.yarn/bin/yarn build
 # for whitenoise middleware
 WORKDIR /app/frontend/build
 
-CMD mkdir root && mv *.ico *.js *.json root
+RUN mkdir root && mv *.ico *.js *.json root
 
 # Collect static files
-CMD mkdir /app/backend/staticfiles
+RUN mkdir /app/backend/staticfiles
 
 WORKDIR /app
 
