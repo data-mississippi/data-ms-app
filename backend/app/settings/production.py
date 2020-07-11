@@ -2,8 +2,10 @@ import os
 from app.settings.base import *
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
+print(SECRET_KEY)
 DEBUG = False
 ALLOWED_HOSTS = [os.environ.get('PRODUCTION_HOST')]
+print(ALLOWED_HOSTS)
 
 INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
 

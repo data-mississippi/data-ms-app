@@ -60,16 +60,12 @@ RUN ls
 
 # WORKDIR /app
 
-RUN echo "$PWD"
-RUN ls
-
-EXPOSE $PORT
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
 CMD DJANGO_SETTINGS_MODULE=app.settings.production \
   SECRET_KEY=SECRET_KEY \
   python3 backend/manage.py collectstatic --noinput
 
-WORKDIR /app/backend
+EXPOSE $PORT
 
 RUN echo "$PWD"
 RUN ls
