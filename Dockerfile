@@ -1,5 +1,4 @@
 FROM python:3.7
-RUN python3 get-pip.py
 
 # Install curl, node, & yarn
 RUN apt-get -y install curl \
