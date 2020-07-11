@@ -18,6 +18,7 @@ WORKDIR /app/frontend
 COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
 CMD $HOME/.yarn/bin/yarn install
 
+
 # Add the rest of the code
 COPY . /app/
 CMD ls /app/
