@@ -20,6 +20,7 @@ CMD $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
 COPY . /app/
+CMD ls /app
 
 # Build static files
 CMD $HOME/.yarn/bin/yarn build
@@ -27,8 +28,9 @@ CMD $HOME/.yarn/bin/yarn build
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
 WORKDIR /app/frontend/build
+CMD ls
 
-RUN mkdir root && mv *.ico *.js *.json root
+CMD mkdir root && mv *.ico *.js *.json root
 
 # Collect static files
 RUN mkdir /app/backend/staticfiles
