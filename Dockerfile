@@ -1,17 +1,17 @@
 FROM python:3.7
+RUN python get-pip.py
 
-FROM node:14.1-alpine AS builder
 # Install curl, node, & yarn
-# RUN apt-get -y install curl \
-#   && curl -sL https://deb.nodesource.com/setup_12.x | bash \
-#   && apt-get install nodejs \
-#   && curl -o- -L https://yarnpkg.com/install.sh | bash
+RUN apt-get -y install curl \
+  && curl -sL https://deb.nodesource.com/setup_12.x | bash \
+  && apt-get install nodejs \
+  && curl -o- -L https://yarnpkg.com/install.sh | bash
 
 WORKDIR /app/backend
 
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
-RUN pip install --upgrade pip -r requirements.txt
+RUN pip3 install --upgrade pip -r requirements.txt
 
 # Install JS dependencies
 WORKDIR /app/frontend
