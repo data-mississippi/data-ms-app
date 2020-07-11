@@ -18,6 +18,7 @@ rebuild image after changes to react package.json
 for instance, to add axios, go
 ```
 docker-compose run --rm frontend npm add axios
+docker-compose run --rm frontend npm install tailwindcss npm-run-all chokidar-cli
 docker-compose down
 docker-compose up --build
 ```
