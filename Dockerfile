@@ -1,5 +1,7 @@
 FROM node:lts as build-deps
 WORKDIR /frontend
+RUN echo "$PWD"
+RUN echo "$ls"
 COPY ./frontend/package.json ./frontend/yarn.lock ./
 RUN yarn
 COPY ./frontend /frontend
@@ -14,6 +16,8 @@ FROM python:3.7
 #   && curl -o- -L https://yarnpkg.com/install.sh | bash
 
 WORKDIR /app/backend
+RUN echo "$PWD"
+RUN echo "$ls"
 
 # Install Python dependencies
 COPY ./backend/requirements.txt /app/backend/
@@ -41,15 +45,23 @@ RUN pip3 install --upgrade pip -r requirements.txt
 # CMD mkdir /app/backend/staticfiles
 
 WORKDIR /app
+RUN echo "$PWD"
+RUN echo "$ls"
 
 COPY . .
 COPY --from=build-deps /frontend/build /app/frontend/build
 
 WORKDIR /app/frontend/build
+
+RUN echo "$PWD"
+RUN echo "$ls"
 RUN mkdir root && mv *.ico *.js *.json root
 RUN mkdir /app/staticfiles
 
 WORKDIR /app
+
+RUN echo "$PWD"
+RUN echo "$ls"
 
 EXPOSE $PORT
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
@@ -58,5 +70,8 @@ CMD DJANGO_SETTINGS_MODULE=app.settings.production \
   python3 backend/manage.py collectstatic --noinput
 
 WORKDIR /app/backend
+
+RUN echo "$PWD"
+RUN echo "$ls"
 
 CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
