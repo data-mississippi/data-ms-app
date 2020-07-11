@@ -16,7 +16,7 @@ RUN pip3 install --upgrade pip -r requirements.txt
 WORKDIR /app/frontend
 
 COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
-RUN $HOME/.yarn/bin/yarn install
+CMD $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
 COPY . /app/
