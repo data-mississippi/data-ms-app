@@ -56,7 +56,4 @@ CMD DJANGO_SETTINGS_MODULE=app.settings.production \
   SECRET_KEY=SECRET_KEY \
   python3 backend/manage.py collectstatic --noinput
 
-CMD echo 'pwd'
-CMD echo pwd
-
-CMD python3 backend/manage.py runserver
+CMD gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
