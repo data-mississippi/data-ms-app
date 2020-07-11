@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 
 # Install curl, node, & yarn
 CMD apt-get -y install curl \
@@ -20,7 +20,7 @@ CMD $HOME/.yarn/bin/yarn install
 
 # Add the rest of the code
 COPY . /app/
-CMD ls /app
+CMD ls /app/
 
 # Build static files
 CMD $HOME/.yarn/bin/yarn build
@@ -33,7 +33,7 @@ CMD ls
 CMD mkdir root && mv *.ico *.js *.json root
 
 # Collect static files
-RUN mkdir /app/backend/staticfiles
+CMD mkdir /app/backend/staticfiles
 
 WORKDIR /app
 
