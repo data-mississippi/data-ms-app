@@ -42,7 +42,6 @@ RUN pip3 install --upgrade pip -r requirements.txt
 
 WORKDIR /app
 
-
 COPY . .
 COPY --from=build-deps /frontend/build /app/frontend/build
 
@@ -57,6 +56,7 @@ CMD DJANGO_SETTINGS_MODULE=app.settings.production \
   SECRET_KEY=SECRET_KEY \
   python3 backend/manage.py collectstatic --noinput
 
-EXPOSE $PORT
+CMD echo 'pwd'
+CMD echo pwd
 
-CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
+CMD python3 backend/manage.py runserver
