@@ -40,7 +40,7 @@ RUN pip3 install --upgrade pip -r requirements.txt
 # # Collect static files
 # CMD mkdir /app/backend/staticfiles
 
-# WORKDIR /app
+WORKDIR /app
 
 
 COPY . .
