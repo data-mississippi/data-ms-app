@@ -1,8 +1,8 @@
-FROM python:3.6
+FROM python:3.7
 
 # Install curl, node, & yarn
 CMD apt-get -y install curl \
-  && curl -sL https://deb.nodesource.com/setup_8.x | bash \
+  && curl -sL https://deb.nodesource.com/setup_12.x | bash \
   && apt-get install nodejs \
   && curl -o- -L https://yarnpkg.com/install.sh | bash
 
@@ -37,7 +37,7 @@ WORKDIR /app
 
 # SECRET_KEY is only included here to avoid raising an error when generating static files.
 # Be sure to add a real SECRET_KEY config variable in Heroku.
-CMD DJANGO_SETTINGS_MODULE=hello_world.settings.production \
+CMD DJANGO_SETTINGS_MODULE=app.settings.production \
   SECRET_KEY=SECRET_KEY \
   python3 backend/manage.py collectstatic --noinput
 

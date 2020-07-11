@@ -1,0 +1,1 @@
+* get newer version of node in deployment docker file

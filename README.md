@@ -65,3 +65,5 @@ generate secret token
 `python3 -c 'import secrets; print(secrets.token_urlsafe(32))'`
 
 `heroku config:set PRODUCTION_HOST='secret-dusk-91150.herokuapp.com' SECRET_KEY=secret_hair_key DJANGO_SETTINGS_MODULE=app.settings.production --app=secret-dusk-91150`
+
+We also need to run `heroku stack:set container` in the terminal to tell our Heroku app to use Docker rather than one of Heroku's language-specific build packs. Now, deploying is as easy as running git push heroku master (if you're on the master branch; otherwise, run git push heroku <your branch>:master).
