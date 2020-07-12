@@ -73,6 +73,8 @@ We also need to run `heroku stack:set container` in the terminal to tell our Her
 --app=secret-dusk-91150
 `heroku update`
 `heroku logs --tail --app=secret-dusk-91150`
+
+### postgres
 `heroku addons:create heroku-postgresql:hobby-dev -a secret-dusk-91150`
 `heroku run python backend/manage.py makemigrations -a secret-dusk-91150`
 
