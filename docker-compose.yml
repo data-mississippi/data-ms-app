@@ -11,7 +11,6 @@ services:
     command: python3 manage.py runserver 0.0.0.0:8000
     environment:
       - DJANGO_SETTINGS_MODULE=app.settings.development
-
   frontend:
     build: ./frontend
     volumes:
@@ -26,3 +25,13 @@ services:
     depends_on:
       - backend
     command: npm start
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ineedtoreadbooksagain
+      - POSTGRES_DB=postgres
+volumes:
+  postgres_data:

@@ -1,8 +1,15 @@
 # Use an official Python runtime as a parent image
-FROM python:3.7
+FROM python:3.8.3-alpine
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 # Adding backend directory to make absolute filepaths consistent across services
 WORKDIR /app/backend
+
+# install psycopg2 dependencies
+RUN apk update \
+    && apk add postgresql-dev gcc python3-dev musl-dev
 
 # Install Python dependencies
 COPY requirements.txt /app/backend

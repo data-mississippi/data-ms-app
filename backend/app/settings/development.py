@@ -10,5 +10,6 @@ SECRET_KEY = 'mi7+sor%@+xus-q*r)-oiay_3*00l$p%32dq(_n+#9*y7-bz(#'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'backend'
+    'backend',
+    'localhost'
 ]

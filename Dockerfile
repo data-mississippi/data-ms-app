@@ -6,6 +6,13 @@ RUN apt-get -y install curl \
   && apt-get install nodejs \
   && curl -o- -L https://yarnpkg.com/install.sh | bash
 
+# install psycopg2
+RUN apk update \
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add postgresql-dev \
+    && pip install psycopg2 \
+    && apk del build-deps
+
 WORKDIR /app/backend
 
 # Install Python dependencies
@@ -43,4 +50,9 @@ RUN DJANGO_SETTINGS_MODULE=app.settings.production \
 
 EXPOSE $PORT
 
-CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
+# add and run as non-root user
+RUN adduser -D sam
+USER sam
+
+# CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
+CMD gunicorn backend.app.wsgi:application --bind 0.0.0.0:$PORT

@@ -72,6 +72,7 @@ We also need to run `heroku stack:set container` in the terminal to tell our Her
 
 --app=secret-dusk-91150
 `heroku update`
+`heroku logs --tail --app=secret-dusk-91150`
 
 https://stackoverflow.com/questions/59719175/where-to-run-collectstatic-when-deploying-django-app-to-heroku-using-docker
 
@@ -99,3 +100,50 @@ https://dev.to/englishcraig/docker-django-react-building-assets-and-deploying-to
 
 tailwind
 https://daveceddia.com/tailwind-create-react-app/
+
+
+Build the image:
+
+$ docker-compose build
+
+Once the image is built, run the container:
+
+$ docker-compose up -d
+
+Navigate to http://localhost:8000/ to again view the welcome screen.
+
+    Check for errors in the logs if this doesn't work via docker-compose logs -f.
+
+
+
+
+  Build the new image and spin up the two containers:
+
+$ docker-compose up -d --build
+
+
+
+Run the migrations:
+
+$ docker-compose exec web python manage.py migrate --noinput
+
+
+
+
+
+    Get the following error?
+
+    django.db.utils.OperationalError: FATAL:  database "hello_django_dev" does not exist
+
+    Run docker-compose down -v to remove the volumes along with the containers. Then, re-build the images, run the containers, and apply the migrations.
+
+
+goood things to do with docker
+https://mherman.org/presentations/dockercon-2018
+
+
+Ensure the default Django tables were created:
+
+docker-compose exec db psql --username=postgres --dbname=postgres
+postgres=# \c postgres
+postgres=# \dt
