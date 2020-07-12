@@ -23,4 +23,4 @@ EXPOSE 8000
 
 # Be sure to use 0.0.0.0 for the host within the Docker container,
 # otherwise the browser won't be able to find it
-CMD python3 manage.py runserver 0.0.0.0:8000
+CMD gunicorn app.wsgi --bind 0.0.0.0:8000

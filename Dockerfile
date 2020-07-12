@@ -53,7 +53,9 @@ EXPOSE $PORT
 RUN adduser -D sam
 USER sam
 
-CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
+#CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
 
 #gonna get postgres working before i bother with gunicorn
-#CMD gunicorn backend.app.wsgi:application --bind 0.0.0.0:$PORT
+
+# CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT
+CMD gunicorn app.wsgi --bind 0.0.0.0:$PORT
