@@ -2,7 +2,7 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: PYTHONPATH=`pwd`/.. gunicorn --bind 0.0.0.0:8000 app.wsgi:application
+  web: gunicorn --bind 0.0.0.0:$PORT backend.wsgi:application
 release:
   image: web
   command:
