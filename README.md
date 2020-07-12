@@ -73,6 +73,8 @@ We also need to run `heroku stack:set container` in the terminal to tell our Her
 --app=secret-dusk-91150
 `heroku update`
 `heroku logs --tail --app=secret-dusk-91150`
+`heroku addons:create heroku-postgresql:hobby-dev -a secret-dusk-91150`
+`heroku run python backend/manage.py makemigrations -a secret-dusk-91150`
 
 https://stackoverflow.com/questions/59719175/where-to-run-collectstatic-when-deploying-django-app-to-heroku-using-docker
 
@@ -147,3 +149,13 @@ Ensure the default Django tables were created:
 docker-compose exec db psql --username=postgres --dbname=postgres
 postgres=# \c postgres
 postgres=# \dt
+
+docker volume inspect data-ms-app_postgres_data
+
+debug docker
+RUN echo "$PWD"
+
+
+test entire project's docker build
+$ docker build -t web:latest .
+$ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 web:latest
