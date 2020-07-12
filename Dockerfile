@@ -1,17 +1,18 @@
-FROM python:3.7
+FROM python:3.8.3-alpine
 
 # Install curl, node, & yarn
-RUN apt-get -y install curl \
-  && curl -sL https://deb.nodesource.com/setup_12.x | bash \
-  && apt-get install nodejs \
-  && curl -o- -L https://yarnpkg.com/install.sh | bash
+RUN apk add --update nodejs \
+    && apk add yarn \
+    && apk add npm
+# RUN apt-get update \
+#   && apt-get -y install curl \
+#   && curl -sL https://deb.nodesource.com/setup_12.x | bash \
+#   && apt-get install nodejs \
+#   && curl -o- -L https://yarnpkg.com/install.sh | bash
 
-# install psycopg2
+# install psycopg2 dependencies
 RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add postgresql-dev \
-    && pip install psycopg2 \
-    && apk del build-deps
+    && apk add postgresql-dev gcc python3-dev musl-dev
 
 WORKDIR /app/backend
 
@@ -23,13 +24,13 @@ RUN pip install --upgrade -r requirements.txt
 WORKDIR /app/frontend
 
 COPY ./frontend/package.json ./frontend/yarn.lock /app/frontend/
-RUN $HOME/.yarn/bin/yarn install
+RUN npm install
 
 # Add the rest of the code
 COPY . /app/
 
 # Build static files
-RUN $HOME/.yarn/bin/yarn build
+RUN npm run-script build
 
 # Have to move all static files other than index.html to root/
 # for whitenoise middleware
@@ -42,8 +43,6 @@ RUN mkdir /app/backend/staticfiles
 
 WORKDIR /app
 
-# SECRET_KEY is only included here to avoid raising an error when generating static files.
-# Be sure to add a real SECRET_KEY config variable in Heroku.
 RUN DJANGO_SETTINGS_MODULE=app.settings.production \
   SECRET_KEY=SECRET_KEY \
   python3 backend/manage.py collectstatic --noinput
