@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import './tailwind.output.css';
+import './generated-styles.css';
 
 function handleSubmit(event) {
   const text = document.querySelector('#char-input').value
