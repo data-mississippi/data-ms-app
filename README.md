@@ -77,6 +77,10 @@ We also need to run `heroku stack:set container` in the terminal to tell our Her
 ### postgres
 `heroku addons:create heroku-postgresql:hobby-dev -a secret-dusk-91150`
 `heroku run python backend/manage.py makemigrations -a secret-dusk-91150`
+`heroku run python backend/manage.py migrate -a secret-dusk-91150`
+
+check on it 
+`heroku pg:psql -a secret-dusk-91150`
 
 https://stackoverflow.com/questions/59719175/where-to-run-collectstatic-when-deploying-django-app-to-heroku-using-docker
 
@@ -157,6 +161,8 @@ docker volume inspect data-ms-app_postgres_data
 debug docker
 RUN echo "$PWD"
 
+list containers
+docker ps 
 
 test entire project's docker build
 $ docker build -t web:latest .
