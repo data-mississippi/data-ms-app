@@ -58,4 +58,6 @@ USER sam
 #gonna get postgres working before i bother with gunicorn
 
 # CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT
-CMD gunicorn backend.app.wsgi.application --bind 0.0.0.0:$PORT
+CMD gunicorn app.wsgi.application --bind 0.0.0.0:$PORT
+
+#CMD gunicorn backend.wsgi.application --bind 0.0.0.0:$PORT
