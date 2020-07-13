@@ -58,7 +58,7 @@ USER sam
 #gonna get postgres working before i bother with gunicorn
 
 # CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT
-CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT
+CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT --log-file -
 
 #this command returns the error but also reaches wsgi.py
 #CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT
