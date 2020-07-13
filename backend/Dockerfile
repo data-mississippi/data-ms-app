@@ -1,9 +1,6 @@
 # Use an official Python runtime as a parent image
 FROM python:3.8.3-alpine
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
 # Adding backend directory to make absolute filepaths consistent across services
 WORKDIR /app/backend
 
