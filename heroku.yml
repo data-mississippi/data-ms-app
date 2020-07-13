@@ -2,7 +2,7 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn backend.app.wsgi:application --bind 0.0.0.0:$PORT
+  web: gunicorn backend.wsgi
 release:
   image: web
   command:
