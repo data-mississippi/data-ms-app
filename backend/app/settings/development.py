@@ -4,7 +4,7 @@
 from app.settings.base import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mi7+sor%@+xus-q*r)-oiay_3*00l$p%32dq(_n+#9*y7-bz(#'
+SECRET_KEY = os.environ.get('DATA_MS_SECRET_KEY_DEV')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
