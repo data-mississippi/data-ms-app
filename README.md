@@ -1,9 +1,7 @@
 # Data Mississippi core app
-This **work in progress** application has two parts: a Django backend with and a React frontend. Django serves json API responses and acts as the CDN for the React app. 
+This **work in progress** application has two parts: a Django `/backend` with and a React `/frontend`. Django serves json and acts as the CDN for the React app. 
 
 Deployment and development is managed by Docker. The Docker build process writes the React files to a static build so the backend can serve the React application. 
-
-
 
 # docker
 ### to run both at once:
@@ -60,7 +58,6 @@ docker/create-react-app weirdness :(
 $ docker ps # get the id of the running container
 $ docker stop <container> # kill it (gracefully)
 ```
-
 
 # Heroku
 The app is deployed on Heroku. They have a CLI tool to manage it.
@@ -165,7 +162,3 @@ test entire project's docker build
 $ docker build -t web:latest .
 $ docker run -d --name django-heroku -e "PORT=8765" -e "DEBUG=1" -p 8007:8765 web:latest
 ```
-
-# python stuff
-generate secret token
-`python3 -c 'import secrets; print(secrets.token_urlsafe(32))'`

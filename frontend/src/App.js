@@ -3,6 +3,14 @@ import axios from 'axios';
 import './App.css';
 import './generated-styles.css';
 
+function VoteCountInput() {
+  return (
+    <textarea>
+      
+    </textarea>
+  )
+}
+
 function handleSubmit(event) {
   const text = document.querySelector('#char-input').value
 

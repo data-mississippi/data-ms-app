@@ -4,11 +4,6 @@ FROM python:3.8.3-alpine
 RUN apk add --update nodejs \
     && apk add yarn \
     && apk add npm
-# RUN apt-get update \
-#   && apt-get -y install curl \
-#   && curl -sL https://deb.nodesource.com/setup_12.x | bash \
-#   && apt-get install nodejs \
-#   && curl -o- -L https://yarnpkg.com/install.sh | bash
 
 # install psycopg2 dependencies
 RUN apk update \
@@ -53,12 +48,4 @@ EXPOSE $PORT
 RUN adduser -D sam
 USER sam
 
-#CMD python3 backend/manage.py runserver 0.0.0.0:$PORT
-
-#gonna get postgres working before i bother with gunicorn
-
-# CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT
 CMD gunicorn --pythonpath backend app.wsgi --bind 0.0.0.0:$PORT
-
-#this command returns the error but also reaches wsgi.py
-#CMD gunicorn backend.app.wsgi --bind 0.0.0.0:$PORT
