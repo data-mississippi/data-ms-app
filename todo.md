@@ -67,5 +67,3 @@ https://www.census.gov/data/developers/data-sets.html
 
 postgis
 http://www.smartjava.org/content/using-d3js-visualize-gis/
-
-367791110980027812917409662569975546399848078406421545757526496285192858
