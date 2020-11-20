@@ -20,12 +20,12 @@ $ docker run -v $PWD/backend:/app/backend -p 8000:8000 backend:latest
 ```
 $ docker-compose run --rm backend python3 manage.py startapp app_name
 ```
-### rebuild image after changes to react package.json or django requirements.txt, etc:
+### rebuild image after changes to react package.json or django requirements.txt, environment variables, etc:
 ```
 $ docker-compose up --build
 ```
 
-for instance, to add axios, go:
+for example, to add axios, go:
 ```
 $ docker-compose run --rm frontend npm add axios
 $ docker-compose down
