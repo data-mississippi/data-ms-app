@@ -1,16 +1,76 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { MapContainer, TileLayer, Marker, Popup, CircleMarker, Tooltip } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, CircleMarker, Tooltip, GeoJSON } from 'react-leaflet'
+import statesGeoJSON from './us-states.json'
 import 'leaflet/dist/leaflet.css'
 import './App.css'
 import './generated-styles.css'
 
+// function MapPlaceholder(message) {
+//   return (
+//     <div>
+//     <p>{message ? message : 'The map is not working with your browser.'}</p>
+//     <p><noscript>You need to enable JavaScript to see this map.</noscript></p>
+//   )
+// }
 
-function VoteCountInput() {
+// // Map of Forlorn, Mississippi.{' '}
+
+// <GeoJSON key='watershed-layer' data={this.props.geojson} style={this.getStyle} />
+
+ // const MapPlaceholder = (<MapPlaceholder message={'Map of America.'} />)
+
+function GenericMap({ center, zoom, children }) {
   return (
-    <textarea>
-      
-    </textarea>
+      <MapContainer
+      center={center} 
+      zoom={zoom} >
+        <TileLayer
+          url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_parent">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_parent">CARTO</a>'
+        />
+        {children}
+      </MapContainer>
+    )
+}
+
+function MapOfAmerica() {
+  const view = {
+    center: [37.8, -96], 
+    zoom: 4
+  }
+
+  function getColor(d) {
+    return d > 1000 ? '#800026' :
+           d > 500  ? '#BD0026' :
+           d > 200  ? '#E31A1C' :
+           d > 100  ? '#FC4E2A' :
+           d > 50   ? '#FD8D3C' :
+           d > 20   ? '#FEB24C' :
+           d > 10   ? '#FED976' :
+                      '#FFEDA0';
+  }
+
+  function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.density),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+  }
+
+  return (
+    <div>
+    <GenericMap
+      center={view.center}
+      zoom={view.zoom}
+    >
+      <GeoJSON key='states-layer' data={statesGeoJSON} style={style} />
+    </GenericMap>
+    </div>
   )
 }
 
@@ -24,20 +84,13 @@ function handleSubmit(event) {
     .catch(err => console.log(err))
 }
 
-function MapPlaceholder() {
-  return (
-    <p>
-      Map of Forlorn, Mississippi.{' '}
-      <noscript>You need to enable JavaScript to see this map.</noscript>
-    </p>
-  )
-}
 
-function Map() {
+
+function MapOfForlorn() {
   return(
     <div className="max-w-md mx-auto flex p-6 h-full w-full">
         <MapContainer
-          placeholder={<MapPlaceholder />} 
+          // placeholder={<MapPlaceholder />} 
           center={[34.256933, -88.703613]} 
           zoom={12}
         >
@@ -134,8 +187,11 @@ function App({props}) {
   return (
     <div className="App m-6">
       <div className="flex">
-        <Map />
+        <MapOfForlorn />
         <BrainIsATeamOfRivals query={query}/>
+      </div>
+      <div className="m-24" style={{width: '300px', height: '550px'}}>
+        <MapOfAmerica />
       </div>
     </div>
   );
