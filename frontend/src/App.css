@@ -1,3 +1,6 @@
+html, body {
+  height: 100%;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +38,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
 }

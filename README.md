@@ -20,12 +20,12 @@ $ docker run -v $PWD/backend:/app/backend -p 8000:8000 backend:latest
 ```
 $ docker-compose run --rm backend python3 manage.py startapp app_name
 ```
-### rebuild image after changes to react package.json or django requirements.txt, etc:
+### rebuild image after changes to react package.json or django requirements.txt, environment variables, etc:
 ```
 $ docker-compose up --build
 ```
 
-for instance, to add axios, go:
+for example, to add axios, go:
 ```
 $ docker-compose run --rm frontend npm add axios
 $ docker-compose down
@@ -45,6 +45,15 @@ docker-compose down -v # removes volumes
 ```
 ```
 $docker-compose logs -f
+```
+```
+docker-compose run --rm backend python3 manage.py shell
+```
+```
+docker-compose run --rm backend python manage.py dumpdata --exclude=sessions --exclude=messages --exclude=contenttypes --exclude=auth.permission --indent 2 > backend/app/fixtures/db.json
+```
+```
+docker-compose run --rm backend python manage.py loaddata app/fixtures/db.json
 ```
 Since we're changing project settings, we'll need to stop our Docker Compose processes (either ctl+c or `docker-compose stop` in a separate tab) and start it again with `docker-compose up`. 
 `docker-compose down` works to stop too

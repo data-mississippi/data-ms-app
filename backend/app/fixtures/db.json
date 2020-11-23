@@ -1,0 +1,850 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$VLDV1aXCEkvr$2Eqw8DqVaI6LmEi+CzNX7VVq+h10V+TrZEqt4LvzumE=",
+    "last_login": "2020-11-23T00:17:42.872Z",
+    "is_superuser": true,
+    "username": "smcalilly",
+    "first_name": "",
+    "last_name": "",
+    "email": "smcalilly@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-11-23T00:17:06.351Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "000",
+  "fields": {
+    "name": "Mississippi",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "h1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "001",
+  "fields": {
+    "name": "Adams",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "003",
+  "fields": {
+    "name": "Alcorn",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "005",
+  "fields": {
+    "name": "Amite",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "007",
+  "fields": {
+    "name": "Attala",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "009",
+  "fields": {
+    "name": "Benton",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "011",
+  "fields": {
+    "name": "Bolivar",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "013",
+  "fields": {
+    "name": "Calhoun",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "015",
+  "fields": {
+    "name": "Carroll",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "017",
+  "fields": {
+    "name": "Chickasaw",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "019",
+  "fields": {
+    "name": "Choctaw",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "021",
+  "fields": {
+    "name": "Claiborne",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "023",
+  "fields": {
+    "name": "Clarke",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "025",
+  "fields": {
+    "name": "Clay",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "027",
+  "fields": {
+    "name": "Coahoma",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "029",
+  "fields": {
+    "name": "Copiah",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "031",
+  "fields": {
+    "name": "Covington",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "033",
+  "fields": {
+    "name": "DeSoto",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "035",
+  "fields": {
+    "name": "Forrest",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "037",
+  "fields": {
+    "name": "Franklin",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "039",
+  "fields": {
+    "name": "George",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "041",
+  "fields": {
+    "name": "Greene",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "043",
+  "fields": {
+    "name": "Grenada",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "045",
+  "fields": {
+    "name": "Hancock",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "047",
+  "fields": {
+    "name": "Harrison",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "049",
+  "fields": {
+    "name": "Hinds",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "051",
+  "fields": {
+    "name": "Holmes",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "053",
+  "fields": {
+    "name": "Humphreys",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "055",
+  "fields": {
+    "name": "Issaquena",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "057",
+  "fields": {
+    "name": "Itawamba",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "059",
+  "fields": {
+    "name": "Jackson",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "061",
+  "fields": {
+    "name": "Jasper",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "063",
+  "fields": {
+    "name": "Jefferson",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "065",
+  "fields": {
+    "name": "Jefferson Davis",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "067",
+  "fields": {
+    "name": "Jones",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "069",
+  "fields": {
+    "name": "Kemper",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "071",
+  "fields": {
+    "name": "Lafayette",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "073",
+  "fields": {
+    "name": "Lamar",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "075",
+  "fields": {
+    "name": "Lauderdale",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "077",
+  "fields": {
+    "name": "Lawrence",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "079",
+  "fields": {
+    "name": "Leake",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "081",
+  "fields": {
+    "name": "Lee",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "083",
+  "fields": {
+    "name": "Leflore",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "085",
+  "fields": {
+    "name": "Lincoln",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "087",
+  "fields": {
+    "name": "Lowndes",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "089",
+  "fields": {
+    "name": "Madison",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "091",
+  "fields": {
+    "name": "Marion",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "093",
+  "fields": {
+    "name": "Marshall",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "095",
+  "fields": {
+    "name": "Monroe",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "097",
+  "fields": {
+    "name": "Montgomery",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "099",
+  "fields": {
+    "name": "Neshoba",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "101",
+  "fields": {
+    "name": "Newton",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "103",
+  "fields": {
+    "name": "Noxubee",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "105",
+  "fields": {
+    "name": "Oktibbeha",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "107",
+  "fields": {
+    "name": "Panola",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "109",
+  "fields": {
+    "name": "Pearl River",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "111",
+  "fields": {
+    "name": "Perry",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "113",
+  "fields": {
+    "name": "Pike",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "115",
+  "fields": {
+    "name": "Pontotoc",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "117",
+  "fields": {
+    "name": "Prentiss",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "119",
+  "fields": {
+    "name": "Quitman",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "121",
+  "fields": {
+    "name": "Rankin",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "123",
+  "fields": {
+    "name": "Scott",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "125",
+  "fields": {
+    "name": "Sharkey",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "127",
+  "fields": {
+    "name": "Simpson",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "129",
+  "fields": {
+    "name": "Smith",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "131",
+  "fields": {
+    "name": "Stone",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "133",
+  "fields": {
+    "name": "Sunflower",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "135",
+  "fields": {
+    "name": "Tallahatchie",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "137",
+  "fields": {
+    "name": "Tate",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "139",
+  "fields": {
+    "name": "Tippah",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "141",
+  "fields": {
+    "name": "Tishomingo",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "143",
+  "fields": {
+    "name": "Tunica",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "145",
+  "fields": {
+    "name": "Union",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "147",
+  "fields": {
+    "name": "Walthall",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "149",
+  "fields": {
+    "name": "Warren",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "151",
+  "fields": {
+    "name": "Washington",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "153",
+  "fields": {
+    "name": "Wayne",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "155",
+  "fields": {
+    "name": "Webster",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "157",
+  "fields": {
+    "name": "Wilkinson",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "159",
+  "fields": {
+    "name": "Winston",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "161",
+  "fields": {
+    "name": "Yalobusha",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+},
+{
+  "model": "counties.county",
+  "pk": "163",
+  "fields": {
+    "name": "Yazoo",
+    "state": "MS",
+    "state_fips": "28",
+    "fips_class": "H1"
+  }
+}
+]
