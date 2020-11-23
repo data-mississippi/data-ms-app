@@ -26,7 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'char_count.apps.CharCountConfig'
+    'char_count.apps.CharCountConfig',
+    'counties.apps.CountiesConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -44,7 +46,7 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -63,23 +65,23 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": 'django.db.backends.postgresql',
-#         "NAME": 'postgres',
-#         "USER": 'postgres',
-#         "PASSWORD": 'ineedtoreadbooksagain',
-#         "HOST": 'db',
-#         "PORT": '5432',
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        "ENGINE": 'django.db.backends.postgresql',
+        "NAME": 'postgres',
+        "USER": 'postgres',
+        "PASSWORD": 'ineedtoreadbooksagain',
+        "HOST": 'db',
+        "PORT": '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
