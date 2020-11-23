@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'char_count.apps.CharCountConfig',
     'counties.apps.CountiesConfig',
     'rest_framework'
 ]
