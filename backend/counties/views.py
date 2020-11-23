@@ -4,5 +4,5 @@ from .serializers import CountySerializer
 
 class CountyViewSet(viewsets.ModelViewSet):
 	"""Returns name and FIPS code for all counties."""
-	queryset = County.objects.all()
+	queryset = County.objects.exclude(pk='000')
 	serializer_class = CountySerializer
