@@ -18,13 +18,15 @@ from django.urls import path, re_path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
 from rest_framework.schemas import get_schema_view
-from counties.views import CountyViewSet
+from counties import views #CountyViewSet, county_geo_json_list, county_geo_json_detail
 
 router = routers.DefaultRouter()
-router.register(r'counties', CountyViewSet)
+# router.register(r'counties', CountyViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('geo/', views.county_geo_json_list),
+    path('geo/<str:fips>/', views.county_geo_json_detail),
     path('docs', get_schema_view(
         title='Data Mississippi',
         description='An API about Mississippi.',

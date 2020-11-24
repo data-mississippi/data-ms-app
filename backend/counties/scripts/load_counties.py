@@ -42,5 +42,28 @@ import pprint
 with open ('counties/scripts/ms-counties.json') as json_file:
 	ms = County.objects.get(pk='000')
 	data = json.load(json_file)
-	pprint.pprint(data)
-	ms_geo_json = CountyGeoJSON(county=ms)
+	ms_geo_json = CountyGeoJSON(county=ms, geojson=data)
+	ms_geo_json.save()
+	print('ms geojson saved')
+
+
+# {"type":"FeatureCollection", "features": []}
+# "properties":{"STATEFP10":"28","COUNTYFP10":"081","VTDST10":"203","GEOID10":"28081203","VTDI10":"A","NAME10":"Euclautubba","NAMELSAD10":"Euclautubba Voting District","LSAD10":"V2","MTFCC10":"G5240","FUNCSTAT10":"N","ALAND10":15410331,"AWATER10":0,"INTPTLAT10":"+34.4085819","INTPTLON10":"-088.7274251"}
+
+with open ('counties/scripts/ms-counties.json') as json_file:
+	data = json.load(json_file)
+	for feature in data.get('features'):
+		geo_dict = {
+		'type': 'FeatureCollection',
+		'features': []
+		}
+		geo_dict.get('features').append(feature)
+		print(feature.get('properties'))
+		county_fips = feature['properties']['CNTY_FIPS']
+		print(county_fips)
+		c = County.objects.get(pk=county_fips)
+		print(c.fips)
+		county_geo_json = CountyGeoJSON(county=c, geojson=geo_dict)
+		county_geo_json.save()
+	print('saved them all')
+		

@@ -59,7 +59,7 @@ function getRedChoroplethStyle(feature) {
            d > 50   ? '#FD8D3C' :
            d > 20   ? '#FEB24C' :
            d > 10   ? '#FED976' :
-                      '#FFEDA0';
+                      '#63bf9b';
   }
 
   return {
@@ -81,7 +81,7 @@ const choroplethStyle = function getRedChoroplethStyle(feature) {
            d > 50   ? '#FD8D3C' :
            d > 20   ? '#FEB24C' :
            d > 10   ? '#FED976' :
-                      '#FFEDA0';
+                      '#63bf9b';
   }
 
   return {
@@ -89,7 +89,6 @@ const choroplethStyle = function getRedChoroplethStyle(feature) {
       weight: 1,
       opacity: 1,
       color: '#666',
-      dashArray: '3',
       fillOpacity: 0.7
   };
 }
@@ -106,9 +105,9 @@ function getGeoJsonPerCounty(countiesGeo, countyFips) {
 
 // county geojson guide? https://sampleserver6.arcgisonline.com/arcgis/rest/services/Census/MapServer/layers
 
-function MapOfAmerica() {
-  const america = {center: [37.8, -96], zoom: 3.5}
-  const mississippiView = {center: [34.256933, -88.703613], zoom: 9}
+function MapOfAmerica({ geoJSON = null}) {
+  const america = {center: [37.8, -96], zoom: 4}
+  const mississippiView = {center: [32.71492866908233, -89.49462890625], zoom: 7}
   const [view, setView] = useState(mississippiView)
   const [boundary, setBoundary] = useState(null)
 
@@ -130,6 +129,7 @@ function MapOfAmerica() {
     // get the original style from this.feature aka the <GeoJSON /> instance
     const originalStyle = getRedChoroplethStyle(this.feature)
 
+    setBoundary(() => null)
     e.target.setStyle({
       fillOpacity: originalStyle.fillOpacity
     })
@@ -146,67 +146,66 @@ function MapOfAmerica() {
     // or maybe it is? see node_modules/@types/leaflet/index.d.ts line 1209
 
     layer.on({
-      // mouseover: mouseoverBoundary,
-      // mouseout: resetBoundaryStyle,
-      // click: handleClick
+      mouseover: mouseoverBoundary,
+      mouseout: resetBoundaryStyle,
+      click: handleClick
     })
   }
 
   return (
-    <div className="w-1/2">
-      <div>
-        {boundary ? 
-        <h2>
-          {boundary.name}
-        </h2> 
-        : null}
+    <div className='w-full flex flex-row'>
+      <div className="w-1/2 m-4">
+        <GenericMap
+          center={view.center}
+          zoom={view.zoom}
+        >
+          {
+            geoJSON 
+            ? <GeoJSON 
+                key='states-layer' 
+                data={geoJSON} 
+                style={choroplethStyle} 
+                onEachFeature={eventHandlersOnEachFeature} />
+            : <GeoJSON />
+          }
+          <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
+            permanent Tooltip for Rectangle
+          </Tooltip>
+        </GenericMap>
       </div>
-      <GenericMap
-        center={view.center}
-        zoom={view.zoom}
-      >
-        {/* <GeoJSON 
-          key='states-layer' 
-          data={msPrecinctsGeoJson} 
-          //style={choroplethStyle} 
-          //onEachFeature={eventHandlersOnEachFeature}
-        /> */}
-        <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
-          permanent Tooltip for Rectangle
-        </Tooltip>
-      </GenericMap>
+      <div className='m-4'>
+        {geoJSON ? null 
+          : <div>
+              <p>loading county lines...</p>
+            </div>
+        }
+        {boundary ? 
+          <div>
+            <h2>
+              {boundary.NAME}
+            </h2> 
+            <p>Population in the year 2000: {boundary.POP2000}</p>
+          </div>
+          : (geoJSON ? <h2>Hover over a county to learn more about it.</h2> : null)}
+      </div>
     </div>
   )
 }
 
 function App() {
-  const [counties, setCounties] = useState(null)
+  const [countiesGeo, setCountiesGeo] = useState(null)
 
   useEffect(() => {
-    fetch(`/counties/`, {
+    fetch(`/geo/`, {
       headers: {'Accept': 'application/json'}
     }).then((res) => res.json())
       .then((counties) => {
-        console.log(counties)
-        setCounties(counties)
+        setCountiesGeo(counties[0].geojson)
       })
-    // const counties = getCounties()
-    // console.log(counties)
-    // setCounties(counties)
-  }, [setCounties])
+  }, [setCountiesGeo])
   return (
-    <div className="flex flex-wrap md items-center h-screen p-24">
-      <MapOfAmerica />
-      <div>
-        {counties &&
-          <ul>
-            {counties.map(county => {
-              return <li>{county.name} | {county.fips}</li>
-            })}
-          </ul>
-        }
-      </div>
-      
+    <div className="flex flex-wrap md items-center h-screen p-4">
+      <MapOfAmerica geoJSON={countiesGeo} />
     </div>
   );
 }
