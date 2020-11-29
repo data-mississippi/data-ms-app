@@ -1,14 +1,3 @@
-from rest_framework import serializers
-from .models import County, CountyBorderGeoJSON
-
-class CountySerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
-		model = County
-		fields = ['fips', 'name']
-
-class CountyBorderSerializer(serializers.ModelSerializer):
-	county_fips = serializers.CharField(source='county.fips', read_only=True)
-	
-	class Meta:
-		model = CountyBorderGeoJSON
-		fields = ['county_fips', 'geojson']
+version https://git-lfs.github.com/spec/v1
+oid sha256:6a611b247e45b1ea5bf39fe3e06cb4f73d992111445ea6f86604289025078cff
+size 427

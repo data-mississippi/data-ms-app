@@ -1,15 +1,3 @@
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-from app.settings.base import *
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DATA_MS_SECRET_KEY_DEV', 'TheSECRET_KEYsettingmustnotbeempty.')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = [
-    'backend',
-    'localhost'
-]
+version https://git-lfs.github.com/spec/v1
+oid sha256:0bff8c2100f17403d4eddb1ecf1a64733cb1606e2fd14a56317f963357042fb3
+size 460

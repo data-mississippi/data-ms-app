@@ -1,20 +1,3 @@
-import os
-from app.settings.base import *
-
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = False
-ALLOWED_HOSTS = [os.environ.get('PRODUCTION_HOST')]
-
-INSTALLED_APPS.extend(["whitenoise.runserver_nostatic"])
-
-# Must insert after SecurityMiddleware, which is first in settings/common.py
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
-
-TEMPLATES[0]["DIRS"] = [os.path.join(BASE_DIR, "../", "frontend", "build")]
-
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "../", "frontend", "build", "static")]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-STATIC_URL = "/static/"
-WHITENOISE_ROOT = os.path.join(BASE_DIR, "../", "frontend", "build", "root")
+version https://git-lfs.github.com/spec/v1
+oid sha256:44c4597c66f27a056bd106b2c6dfcc496651ebc7456980ebf4b9457721f92db2
+size 747

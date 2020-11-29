@@ -1,16 +1,3 @@
-# Use an official node runtime as a parent image
-FROM node:12
-
-WORKDIR /app/
-
-# Install dependencies
-COPY package.json yarn.lock /app/
-
-RUN npm install
-
-# Add rest of the client code
-COPY . /app/
-
-EXPOSE 3000
-
-CMD npm start
+version https://git-lfs.github.com/spec/v1
+oid sha256:5b8e82a59f9c90c7f5937fa4047bc78ffc182a4761d369b82cc0529834be7b66
+size 223

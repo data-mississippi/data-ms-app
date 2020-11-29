@@ -1,26 +1,3 @@
-// postcss.config.js
-
-// remove unused CSS from the tailwind library
-const purgecss = require('@fullhuman/postcss-purgecss')({
-
-  // Specify the paths to all of the template files in your project
-  content: [
-    './public/**/*.html',
-    './src/**/*.js',
-    // etc.
-  ],
-
-  // Include any special characters you're using in this regular expression
-  defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-})
-
-module.exports = {
-  plugins: [
-    require('postcss-import'),
-    require('autoprefixer'),
-    require('tailwindcss'),
-    ...process.env.NODE_ENV === 'production'
-      ? [purgecss]
-      : []
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:4dfc9ef33f9965f14f7cca02c57781704a48d33eb9c4edd436e2be2535e33648
+size 624

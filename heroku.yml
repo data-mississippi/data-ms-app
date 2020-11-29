@@ -1,9 +1,3 @@
-build:
-  docker:
-    web: Dockerfile
-run:
-  web: gunicorn --pythonpath backend app.wsgi --bind 0.0.0.0:$PORT
-release:
-  image: web
-  command:
-    - python backend/manage.py collectstatic --noinput
+version https://git-lfs.github.com/spec/v1
+oid sha256:b87943afb3f024564f05527b586e77fdf59369963b0f617b776d0cdee61d7d18
+size 196
