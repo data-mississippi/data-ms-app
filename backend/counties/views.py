@@ -1,36 +1,39 @@
 from django.http import HttpResponse, JsonResponse
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, generics
+from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import County, CountyGeoJSON
-from .serializers import CountySerializer, CountyGeoJSONSerializer
+from .models import County, CountyBorderGeoJSON
+from .serializers import CountySerializer, CountyBorderSerializer
+
 
 class CountyViewSet(viewsets.ModelViewSet):
-	"""Returns name and FIPS code for all counties."""
+	"""
+	Returns name and FIPS code for all counties.
+	"""
 	queryset = County.objects.exclude(pk='000')
 	serializer_class = CountySerializer
 	http_method_names = ['get']
 
 
-def county_geo_json_list(request):
-	print('getting them all')
-	if request.method == 'GET':
-		geos = CountyGeoJSON.objects.all()
-		serializer = CountyGeoJSONSerializer(geos, many=True, context={'request': request})
-		return JsonResponse(serializer.data, safe=False)
+class CountyBorderList(generics.ListAPIView):
+	"""
+	Returns GeoJSON of all county borders.
+	"""
+	queryset = CountyBorderGeoJSON.objects.all()
+	serializer_class = CountyBorderSerializer
 
 
-def county_geo_json_detail(request, fips):
-	print()
-	print('request')
-	print(fips)
-	try:
-		print('trying this')
-		county_geo = CountyGeoJSON.objects.filter(county__pk=fips)
-		print('got this')
-		print(county_geo)
-	except CountyGeoJSON.DoesNotExist:
-		return HttpResponse(status=404)
+class CountyBorderDetail(generics.RetrieveAPIView):
+	"""
+	Returns GeoJSON for a single county's border. 
+	The object is queried by the county's FIPS.
+	"""
+	queryset = CountyBorderGeoJSON.objects.all()
+	serializer_class = CountyBorderSerializer
+	lookup_field = 'county'
 
-	if request.method == 'GET':
-		serializer = CountyGeoJSONSerializer(county_geo[0], context={'request': request})
-		return JsonResponse(serializer.data)
+# test should return 404
+# http://localhost:8000/counties/geojson/borders/080/
+
+# test should return lee county
+# http://localhost:8000/counties/geojson/borders/081/

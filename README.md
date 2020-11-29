@@ -55,6 +55,11 @@ docker-compose run --rm backend python manage.py dumpdata --exclude=sessions --e
 ```
 docker-compose run --rm backend python manage.py loaddata app/fixtures/db.json
 ```
+```
+#run tests
+docker-compose run --rm backend python3 manage.py test
+```
+
 Since we're changing project settings, we'll need to stop our Docker Compose processes (either ctl+c or `docker-compose stop` in a separate tab) and start it again with `docker-compose up`. 
 `docker-compose down` works to stop too
 
@@ -106,8 +111,9 @@ $ heroku update
 When setting up Docker, we needed to run `heroku stack:set container` in the terminal to tell our Heroku app to use Docker rather than one of Heroku's language-specific build packs.
 
 # Postgress
-Make migrations in production:
+Load fixtures and make migrations in production:
 ```
+$ heroku run python backend/manage.py loaddata backend/app/fixtures/db.json
 $ heroku run python backend/manage.py makemigrations -a secret-dusk-91150
 $ heroku run python backend/manage.py migrate -a secret-dusk-91150
 ```

@@ -67,3 +67,11 @@ https://www.census.gov/data/developers/data-sets.html
 
 postgis
 http://www.smartjava.org/content/using-d3js-visualize-gis/
+
+
+
+
+# counties
+- get more updated county line geojson
+- write tests for GeoJSON views and models
+- api documentation

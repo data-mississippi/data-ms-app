@@ -153,8 +153,8 @@ function MapOfAmerica({ geoJSON = null}) {
   }
 
   return (
-    <div className='w-full flex flex-row'>
-      <div className="w-1/2 m-4">
+    <div className='w-full flex flex-row md:flex-col'>
+      <div className="w-1/2 md:w-full m-4">
         <GenericMap
           center={view.center}
           zoom={view.zoom}
