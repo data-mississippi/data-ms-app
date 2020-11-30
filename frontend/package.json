@@ -1,3 +1,49 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:557c85e27392b0e0457812f1f5f8147328a468cb10ebadb1b06366975ff3ecd3
-size 1326
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://backend:8000",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "autoprefixer": "^9.8.5",
+    "axios": "^0.19.2",
+    "leaflet": "^1.7.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "postcss-import": "^12.0.1",
+    "postcss-purgecss": "^2.0.3",
+    "purgecss": "^2.3.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-leaflet": "^3.0.2",
+    "react-scripts": "3.4.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "scripts": {
+    "build:tailwind": "postcss src/styles.css -o src/generated-styles.css",
+    "watch:tailwind": "postcss -w src/styles.css -o src/generated-styles.css",
+    "start": "run-p watch:tailwind start:react",
+    "start:react": "sleep 5 && react-scripts start",
+    "prebuild": "npm run build:tailwind",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

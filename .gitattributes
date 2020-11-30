@@ -1,3 +1,2 @@
 db.json filter=lfs diff=lfs merge=lfs -text
-backend/app/fixtures/db.json filter=lfs diff=lfs merge=lfs -text
-*.json filter=lfs diff=lfs merge=lfs -text
+backend/app/fixtures/*.json filter=lfs diff=lfs merge=lfs -text
