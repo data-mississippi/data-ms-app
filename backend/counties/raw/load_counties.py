@@ -74,7 +74,7 @@ with open ('counties/scripts/ms-counties.json') as json_file:
 # 	name = models.CharField(max_length=140)
 # 	name_area_description = models.CharField(max_length=280)
 
-with open ('counties/raw/ms-precincts-12.json') as json_file:
+with open ('backend/counties/raw/ms-precincts-12.json') as json_file:
 	data = json.load(json_file)
 	for feature in data.get('features'):
 		print(feature.get('properties'))

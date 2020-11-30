@@ -8,5 +8,5 @@ router.register(r'', views.CountyViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('geojson/borders/', views.CountyBorderList.as_view()),
-    path('<str:county>/geojson/borders/', views.CountyBorderDetail.as_view()),
+    path('<str:county>/geojson/border/', views.CountyBorderDetail.as_view()),
 ]
