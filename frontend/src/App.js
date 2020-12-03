@@ -194,18 +194,30 @@ function MapOfAmerica({ geoJSON = null}) {
 
 function App() {
   const [countiesGeo, setCountiesGeo] = useState(null)
+  const [countyPrecincts, setCountyPrecincts] = useState(null)
 
+  const countyBordersUrl = '/counties/geojson/borders/'
   useEffect(() => {
-    fetch(`/counties/geojson/borders/`, {
+    fetch(`/counties/081/precincts/`, {
       headers: {'Accept': 'application/json'}
     }).then((res) => res.json())
-      .then((counties) => {
-        setCountiesGeo(counties[0].geojson)
+      .then((precincts) => {
+        //setCountiesGeo(counties[0].geojson)
+        const geo_json = {
+          'type': 'FeatureCollection',
+          'features': []
+          }
+        geo_json.features = precincts.map((precinct) => {
+          console.log(precinct.geojson.features)
+          return precinct.geojson.features[0]
+        })
+        console.log(geo_json)
+        setCountyPrecincts(geo_json)
       })
   }, [setCountiesGeo])
   return (
     <div className="flex flex-wrap md items-center h-screen p-4">
-      <MapOfAmerica geoJSON={countiesGeo} />
+      <MapOfAmerica geoJSON={countyPrecincts} />
     </div>
   );
 }
