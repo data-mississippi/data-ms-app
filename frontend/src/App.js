@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, Tooltip, GeoJSON } from 'react-leaflet'
-// import statesGeoJSON from './us-states.geojson'
-// import msCountiesGeoJson from './ms-counties.json'
-// import msPrecinctsGeoJson from './ms-precincts-12.json'
-import testJson from './test.json'
 import 'leaflet/dist/leaflet.css'
-import './App.css'
-import './generated-styles.css'
-import GreetingsFromForlorn from './GreetingsFromForlorn'
+import './styles/App.css'
+import './styles/generated-styles.css'
+import GreetingsFromForlorn from './maps/GreetingsFromForlorn'
 
 // function MapPlaceholder(message) {
 //   return (
@@ -198,7 +194,7 @@ function App() {
 
   const countyBordersUrl = '/counties/geojson/borders/'
   useEffect(() => {
-    fetch(`/counties/081/precincts/`, {
+    fetch(`/counties/precincts/081/`, {
       headers: {'Accept': 'application/json'}
     }).then((res) => res.json())
       .then((precincts) => {

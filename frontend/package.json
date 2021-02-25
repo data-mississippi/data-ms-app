@@ -22,8 +22,8 @@
     "tailwindcss": "^1.4.6"
   },
   "scripts": {
-    "build:tailwind": "postcss src/styles.css -o src/generated-styles.css",
-    "watch:tailwind": "postcss -w src/styles.css -o src/generated-styles.css",
+    "build:tailwind": "postcss src/styles/styles.css -o src/styles/generated-styles.css",
+    "watch:tailwind": "postcss -w src/styles/styles.css -o src/styles/generated-styles.css",
     "start": "run-p watch:tailwind start:react",
     "start:react": "sleep 5 && react-scripts start",
     "prebuild": "npm run build:tailwind",

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import 'leaflet/dist/leaflet.css'
-import './App.css'
-import './generated-styles.css'
+import '../styles/App.css'
+import '../styles/generated-styles.css'
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, Tooltip, GeoJSON } from 'react-leaflet'
 
 function MapOfForlorn() {
