@@ -6,7 +6,7 @@ import os
 import string
 import re
 
-# import fips and county name for each county
+# Import FIPS and county name for each county
 with open('counties/ms-fips.csv', 'r') as f:
 	csv_reader = reader(f)
 	counter = 0
@@ -43,7 +43,7 @@ import pprint
 with open ('counties/scripts/ms-counties.json') as json_file:
 	ms = County.objects.get(pk='000')
 	data = json.load(json_file)
-	ms_geo_json = CountyGeoJSON(county=ms, geojson=data)
+	ms_geo_json = CountyBorderGeoJSON(county=ms, geojson=data)
 	ms_geo_json.save()
 	print('ms geojson saved')
 
@@ -64,7 +64,7 @@ with open ('counties/scripts/ms-counties.json') as json_file:
 		print(county_fips)
 		c = County.objects.get(pk=county_fips)
 		print(c.fips)
-		county_geo_json = CountyGeoJSON(county=c, geojson=geo_dict)
+		county_geo_json = CountyBorderGeoJSON(county=c, geojson=geo_dict)
 		county_geo_json.save()
 	print('saved them all')
 		
