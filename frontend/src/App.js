@@ -7,24 +7,9 @@ import {
 } from 'react-router-dom'
 import './styles/App.css'
 import './styles/generated-styles.css'
-
-function Home() {
-  return (
-    <p>general map</p>
-  )
-}
-
-function About() {
-  return (
-    <p>About Data Mississippi</p>
-  )
-}
-
-function VotingPrecinctMaps() {
-  return (
-    <h1>Voting Precinct Maps</h1>
-  )
-}
+import Home from './Home'
+import About from './About'
+import Maps from './Maps'
 
 function App() {
   return (
@@ -41,13 +26,13 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li className="m-2">
+              <Link to="/precinct-maps">Maps</Link>
+            </li>
+            <li className="m-2">
+              <Link to="/docs/">API</Link>
+            </li>
+            <li className="m-2">
               <Link to="/about">About</Link>
-            </li>
-            <li className="m-2">
-              <Link to="/precinct-maps">Voting Precinct Maps</Link>
-            </li>
-            <li className="m-2">
-              <Link to="/docs/">API Documentation</Link>
             </li>
           </ul>
         </nav>
@@ -56,12 +41,11 @@ function App() {
             renders the first one that matches the current URL. */}
         <div className="container mx-auto">
           <Switch>
-            
             <Route exact path="/about">
               <About />
             </Route>
             <Route exact path="/precinct-maps">
-              <VotingPrecinctMaps />
+              <Maps />
             </Route>
             <Route exact path="/">
               <Home />
