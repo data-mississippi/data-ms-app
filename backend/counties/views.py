@@ -38,7 +38,6 @@ class VotingPrecinctList(generics.ListAPIView):
 	"""
 	Returns all voting precincts for the state.
 	"""
-	print('voting precinct list')
 	queryset = VotingPrecinct.objects.all()
 	serializer_class = VotingPrecinctSerializer
 

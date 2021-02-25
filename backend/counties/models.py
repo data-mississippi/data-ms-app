@@ -7,11 +7,11 @@ class County(models.Model):
 	Taken from the US Census 2010 FIPS Codes for Counties and County Equivalent Entities.
 	https://www2.census.gov/geo/docs/reference/codes/files/st28_ms_cou.txt
 	"""
-	fips = models.CharField(primary_key=True, max_length=3)
-	name = models.CharField(max_length=50)
-	state = models.CharField(max_length=2, default='MS')
-	state_fips = models.CharField(max_length=2, default='28')
-	fips_class = models.CharField(max_length=2, default='H1')
+	fips = models.CharField('FIPS Code', primary_key=True, max_length=3)
+	name = models.CharField('County Name', max_length=50)
+	state = models.CharField('State', max_length=2, default='MS')
+	state_fips = models.CharField('State FIPS', max_length=2, default='28')
+	fips_class = models.CharField('FIPS Class', max_length=2, default='H1')
 	
 	class Meta:
 		ordering = ['fips']
@@ -56,11 +56,11 @@ class VotingPrecinct(BaseGeoJSON):
 		return f'{self.name} in {self.county.name}'
 
 
-# class VotingPrecinctGeoJSON(BaseGeoJSON):
-# 	"""
-# 	GeoJSON features that represent a VotingPrecinct's boundaries.
-# 	"""
-# 	precinct = models.ForeignKey(VotingPrecinct, on_delete=models.CASCADE)
+class VotingPrecinctGeoJSON(BaseGeoJSON):
+	"""
+	GeoJSON features that represent a VotingPrecinct's boundaries.
+	"""
+	precinct = models.ForeignKey(VotingPrecinct, on_delete=models.CASCADE)
 
-# 	def __str__(self):
-# 		return f'{self.precinct.name} in {self.precinct.county.name} County'
+	def __str__(self):
+		return f'{self.precinct.name} in {self.precinct.county.name} County'
