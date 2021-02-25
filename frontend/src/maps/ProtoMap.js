@@ -4,36 +4,8 @@ import { MapContainer, TileLayer, Marker, Popup, CircleMarker, Tooltip, GeoJSON 
 import 'leaflet/dist/leaflet.css'
 import '../styles/App.css'
 import '../styles/generated-styles.css'
+import BaseMap from './BaseMap'
 
-// function MapPlaceholder(message) {
-//   return (
-//     <div>
-//     <p>{message ? message : 'The map is not working with your browser.'}</p>
-//     <p><noscript>You need to enable JavaScript to see this map.</noscript></p>
-//   )
-// }
-
-// // Map of Forlorn, Mississippi.{' '}
-
-// <GeoJSON key='watershed-layer' data={this.props.geojson} style={this.getStyle} />
-
- // const MapPlaceholder = (<MapPlaceholder message={'Map of America.'} />)
-
-function GenericMap({ center, zoom, children }) {
-  return (
-    <MapContainer
-      center={center} 
-      zoom={zoom}
-      className=""
-      >
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright" target="_parent">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_parent">CARTO</a>'
-        />
-        {children}
-    </MapContainer>
-    )
-}
 
 function getCounties() {
   axios.get(`/counties/`, {
@@ -150,7 +122,7 @@ function MapOfAmerica({ geoJSON = null}) {
   return (
     <div className='w-full flex flex-row md:flex-col'>
       <div className="w-1/2 md:w-full m-4">
-        <GenericMap
+        <BaseMap
           center={view.center}
           zoom={view.zoom}
         >
@@ -166,7 +138,7 @@ function MapOfAmerica({ geoJSON = null}) {
           <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
             permanent Tooltip for Rectangle
           </Tooltip>
-        </GenericMap>
+        </BaseMap>
       </div>
       <div className='m-4'>
         {geoJSON ? null 
