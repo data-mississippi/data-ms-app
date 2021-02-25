@@ -7,8 +7,8 @@ router.register(r'', views.CountyViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('geojson/borders/', views.CountyBorderList.as_view()),
-    path('<str:county>/geojson/border/', views.CountyBorderDetail.as_view()),
+    path('borders/', views.CountyBorderList.as_view()),
+    path('borders/<str:county>/', views.CountyBorderDetail.as_view()),
     path('precincts/', views.VotingPrecinctList.as_view()),
-    path('<str:county>/precincts/', views.get_all_precincts_for_county)
+    path('precincts/<str:county>/', views.get_all_precincts_for_county)
 ]
