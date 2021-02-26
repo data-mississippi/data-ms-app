@@ -30,6 +30,10 @@ function CountyBorderMap({ children, onChooseCounty }) {
     function onCountyClick(e) {
         const layer = e.target
 
+        // layer.setStyle({
+        //     fillOpacity: 1,
+        // });
+
         const layerFeature = (layer && layer.feature && layer.feature.properties) 
                                 ? layer.feature.properties 
                                 : null
@@ -55,13 +59,10 @@ function CountyBorderMap({ children, onChooseCounty }) {
             headers: {'Accept': 'application/json'}
           }).then((res) => res.json())
             .then((counties) => {
-                console.log('counties', counties)
                 setCountyBorders(counties.geojson)
             })
 
     }, [setCountyBorders])
-
-    
 
     return (
         <BaseMap 
