@@ -1,13 +1,40 @@
 # Data Mississippi core app
-This **work in progress** application has two parts: a Django `/backend` with and a React `/frontend`. Django serves json and acts as the CDN for the React app. 
+This **work in progress** application has two parts: a Django `/backend` with and a React `/frontend`. A Django backend serves JSON and a React frontend. The React frontend gets data from the JSON backend.
 
 Deployment and development is managed by Docker. The Docker build process writes the React files to a static build so the backend can serve the React application. 
 
-# docker
+## local development
+make an image:
+```bash
+docker-compose build
+```
+
+create the county data:
+```bash
+docker-compose run --rm backend python3 manage.py load_county_data
+```
+
+run the app:
+```bash
+docker-compose up
+``` 
+
+## helpful docker commands
+### run django manage commands
+```bash
+docker-compose run --rm backend python3 manage.py shell
+```
+
+### rebuild image after changes to react package.json or django requirements.txt, environment variables, etc:
+```
+$ docker-compose up --build
+```
+
 ### to run both at once:
 ```
 $ docker-compose up
 ``` 
+
 ### to run only frontend:
 ```
 $ docker run -it -v $PWD/frontend:/app -p 3000:3000 frontend:latest npm start
@@ -20,10 +47,6 @@ $ docker run -v $PWD/backend:/app/backend -p 8000:8000 backend:latest
 ```
 $ docker-compose run --rm backend python3 manage.py startapp app_name
 ```
-### rebuild image after changes to react package.json or django requirements.txt, environment variables, etc:
-```
-$ docker-compose up --build
-```
 
 for example, to add axios, go:
 ```
@@ -31,10 +54,7 @@ $ docker-compose run --rm frontend npm add axios
 $ docker-compose down
 $ docker-compose up --build
 ```
-Or something like this:
-```
-$ docker-compose up -d --build
-```
+
 Run migrations for Django in dev:
 ```
 $ docker-compose exec web python manage.py migrate --noinput
@@ -56,29 +76,34 @@ docker-compose run --rm backend python manage.py dumpdata --exclude=sessions --e
 docker-compose run --rm backend python manage.py loaddata app/fixtures/db.json
 ```
 ```
-#run tests
+run tests
 docker-compose run --rm backend python3 manage.py test
 ```
 
-Since we're changing project settings, we'll need to stop our Docker Compose processes (either ctl+c or `docker-compose stop` in a separate tab) and start it again with `docker-compose up`. 
-`docker-compose down` works to stop too
-
-Access the backend at `localhost:8000` and the frontend at `localhost:3000`
-
-docker/create-react-app weirdness :(
-- https://stackoverflow.com/questions/60790440/docker-container-exiting-immediately-after-starting-when-using-npm-init-react-ap
-- https://github.com/facebook/create-react-app/issues/8688
+debug a container or stop it
 ```
 $ docker ps # get the id of the running container
 $ docker stop <container> # kill it (gracefully)
 ```
 
-# Heroku
+Since we're changing project settings, we'll need to stop our Docker Compose processes (either ctl+c or `docker-compose stop` in a separate tab) and start it again with `docker-compose up`. 
+`docker-compose down` works to stop too
+
+
+## django and react
+Access the backend at `localhost:8000` and the frontend at `localhost:3000`. TODO: fix the bugs caused by this
+
+docker/create-react-app weirdness :(
+- https://stackoverflow.com/questions/60790440/docker-container-exiting-immediately-after-starting-when-using-npm-init-react-ap
+- https://github.com/facebook/create-react-app/issues/8688
+
+
+## Heroku
 The app is deployed on Heroku. They have a CLI tool to manage it.
 
 Deploy:
 ```
-$ git push heroku master
+$ git push heroku master --app=secret-dusk-91150
 ```
 
 Sometimes you need some more logging:
@@ -107,10 +132,9 @@ Update heroku
 $ heroku update
 ```
 
-
 When setting up Docker, we needed to run `heroku stack:set container` in the terminal to tell our Heroku app to use Docker rather than one of Heroku's language-specific build packs.
 
-# Postgress
+### Postgress
 Load fixtures and make migrations in production:
 ```
 $ heroku run python backend/manage.py loaddata backend/app/fixtures/db.json
@@ -127,14 +151,13 @@ $ heroku addons:create heroku-postgresql:hobby-dev -a secret-dusk-91150
 ```
 Create admin superuser:
 ```
-$heroku run python backend/manage.py createsuperuser
+heroku run python backend/manage.py createsuperuser
 ```
 
-# TailwindCSS
+## TailwindCSS
 The React application uses TailwindCSS. It required a build script that was [inspired by this guide](https://daveceddia.com/tailwind-create-react-app/). He's edited since then, but basically Tailwind must write a generated CSS file based on whatever Tailwind classes the application is using. PurgeCSS removes any unused classes before writing to the build folder. PostCSS finishes the build.
 
 
-# ETC
 ## just some links for reference
 good things to do with docker
 https://mherman.org/presentations/dockercon-2018
