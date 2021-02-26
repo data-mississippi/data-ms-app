@@ -6,6 +6,7 @@ import { GeoJSON } from 'react-leaflet'
 function CountyBorderMap({ children, onChooseCounty }) {
     const [countyBorders, setCountyBorders] = useState(null)
     const [boundary, setBoundary] = useState(null)
+
     const grayPurpleFill = {
         fillColor: '#daf0ce', 
         weight: 0.5,
@@ -29,10 +30,6 @@ function CountyBorderMap({ children, onChooseCounty }) {
 
     function onCountyClick(e) {
         const layer = e.target
-
-        // layer.setStyle({
-        //     fillOpacity: 1,
-        // });
 
         const layerFeature = (layer && layer.feature && layer.feature.properties) 
                                 ? layer.feature.properties 

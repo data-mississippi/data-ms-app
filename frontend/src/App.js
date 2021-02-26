@@ -7,9 +7,9 @@ import {
 } from 'react-router-dom'
 import './styles/App.css'
 import './styles/generated-styles.css'
-import Home from './Home'
+import Population from './Population'
 import About from './About'
-import Maps from './Maps'
+import Precincts from './Precincts'
 
 function App() {
   return (
@@ -23,10 +23,10 @@ function App() {
           
           <ul className="flex flex-row items-center font-bold text-blue-900">
             <li className="m-2">
-              <Link to="/">Home</Link>
+              <Link to="/">Population</Link>
             </li>
             <li className="m-2">
-              <Link to="/precinct-maps">Maps</Link>
+              <Link to="/precinct-maps">Precincts</Link>
             </li>
             <li className="m-2">
               <Link to="/docs/">API</Link>
@@ -45,10 +45,10 @@ function App() {
               <About />
             </Route>
             <Route exact path="/precinct-maps">
-              <Maps />
+              <Precincts />
             </Route>
             <Route exact path="/">
-              <Home />
+              <Population />
             </Route>
           </Switch>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Maps() {
+function Precincts() {
     return (
         <>
             <h1>Maps</h1>
@@ -12,4 +12,4 @@ function Maps() {
     )
 }
 
-export default Maps
+export default Precincts
