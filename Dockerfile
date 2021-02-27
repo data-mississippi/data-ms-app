@@ -7,7 +7,7 @@ RUN apk add --update nodejs \
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add postgresql-dev gcc python3-dev musl-dev build-essential ogr2ogr gdal-bin
 
 WORKDIR /app/backend
 

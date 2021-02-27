@@ -24,7 +24,6 @@ function CountyBorderMap({ children, onChooseCounty }) {
     }
 
     function resetBoundaryStyle(e) {
-        setBoundary(() => null)
         e.target.setStyle(grayPurpleFill)
     }
 
@@ -39,6 +38,7 @@ function CountyBorderMap({ children, onChooseCounty }) {
         onChooseCounty(layerFeature)
     }
 
+    // todo: useMemo or useCallback. see: https://react-leaflet.js.org/docs/example-external-state
     function eventHandlersOnEachFeature(feature, layer) {
         // this doesn't seem right...
         // update: it's not! see https://reactjs.org/docs/refs-and-the-dom.html
@@ -52,11 +52,11 @@ function CountyBorderMap({ children, onChooseCounty }) {
     }
 
     useEffect(() => {
-        fetch(`/counties/borders/000/`, {
+        fetch(`./geojson/county_borders_2020.geojson`, {
             headers: {'Accept': 'application/json'}
           }).then((res) => res.json())
             .then((counties) => {
-                setCountyBorders(counties.geojson)
+                setCountyBorders(counties)
             })
 
     }, [setCountyBorders])
