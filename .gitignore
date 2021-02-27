@@ -1,0 +1,9 @@
+*.shp 
+*.dbf 
+*.prj 
+*.shx 
+*.sbn 
+*.sbx
+*.cpg
+*.zip
+*.xml

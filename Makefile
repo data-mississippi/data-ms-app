@@ -1,5 +1,5 @@
 county_borders_2020.geojson: tl_2020_28_county20.shp
-	ogr2ogr -f GeoJSON county_borders_2020.geojson tl_2020_28_county20.shp
+	ogr2ogr -f GeoJSON frontend/src/maps/county_borders_2020.geojson tl_2020_28_county20.shp
 
 tl_2020_28_county20.shp: county_borders_2020.zip
 	unzip $<
