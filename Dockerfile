@@ -1,3 +1,5 @@
+# This Dockerfile builds the app when it's pushed to Heroku
+
 FROM python:3.8.3-alpine
 
 # Install curl, node, & yarn
@@ -7,7 +9,7 @@ RUN apk add --update nodejs \
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev build-essential ogr2ogr gdal-bin
+    && apk add postgresql-dev gcc python3-dev musl-dev
 
 WORKDIR /app/backend
 
