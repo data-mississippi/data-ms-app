@@ -10,5 +10,6 @@ urlpatterns = [
     path('borders/', views.CountyBorderList.as_view()),
     path('borders/<str:county>/', views.CountyBorderDetail.as_view()),
     path('precincts/', views.VotingPrecinctList.as_view()),
-    path('precincts/<str:county>/', views.get_all_precincts_for_county)
+    path('precincts/<str:county>/', views.get_all_precincts_for_county),
+    path('populations/<str:county>/', views.CountyPopulationDetail.as_view())
 ]

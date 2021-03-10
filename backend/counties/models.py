@@ -66,3 +66,27 @@ class VotingPrecinctGeoJSON(BaseGeoJSON):
 
 	def __str__(self):
 		return f'{self.precinct.name} in {self.precinct.county.name} County'
+
+class Population(models.Model):
+	year = models.IntegerField()
+	survey = models.CharField(max_length=140)
+	total = models.IntegerField()
+	black = models.IntegerField()
+	white = models.IntegerField()
+	hispanic = models.IntegerField()
+	american_indian_eskimo_aleut = models.IntegerField()
+	asian_pacific_islander = models.IntegerField()
+	male = models.IntegerField()
+	female = models.IntegerField()
+	age_under_5 = models.IntegerField()
+	age_5_17 = models.IntegerField()
+	age_18_29 = models.IntegerField()
+	age_30_49 = models.IntegerField()
+	age_50_64 = models.IntegerField()
+	age_65_plus = models.IntegerField()
+
+	class Meta:
+		abstract = True
+
+class CountyPopulation(Population):
+	county = models.ForeignKey(County, on_delete=models.CASCADE)
