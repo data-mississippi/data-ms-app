@@ -1,10 +1,9 @@
 .PHONY: all clean
 
-#county_populations: raw_county_populations.csv
-# get the names of the headers and make one csv
-# https://api.census.gov/data/2010/dec/sf1/groups/P3.json
+clean_county_populations.json: raw_county_populations.json
+	python3 get_county_populations.py $< $@
 
-county_populations.json: county_fips.csv
+raw_county_populations.json: county_fips.csv
 	python3 get_county_populations.py $< $@
 	
 county_fips.csv:
