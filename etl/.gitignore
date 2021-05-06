@@ -9,3 +9,6 @@
 *.xml
 *.csv
 *.json
+
+
+__pycache__
