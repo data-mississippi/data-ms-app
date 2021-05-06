@@ -6,15 +6,6 @@ from dataclasses import asdict
 from survey import Survey
 from ms_census import MississippiCensus
 
-
-print('target')
-
-target = sys.argv[2]
-print(target)
-print(sys.argv[1])
-print(sys.argv[0])
-api_key = os.getenv('CENSUS_API_KEY')
-
 sf1 = Survey(
     survey_key='sf1',
     dataset_name='Census Summary File 1',
@@ -38,6 +29,7 @@ acs5 = Survey(
 
 surveys = [sf1, acs5]
 
+api_key = os.getenv('CENSUS_API_KEY')
 c = MississippiCensus(api_key)
 
 for s in surveys:
@@ -78,7 +70,4 @@ for s in surveys:
 
 output_data = [asdict(d) for d in surveys]
 
-with open(target, 'w') as f:
-    f.write(json.dumps(output_data, indent=4))
-
-# TODO stdout
+json.dump(output_data, sys.stdout, indent=4)
