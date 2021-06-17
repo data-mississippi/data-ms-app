@@ -1,9 +1,7 @@
-frontend/public/geojson/county_borders_2020.geojson : etl/tmp/%.shp
-	echo "border"
-	echo $<
+etl/output/county_borders_2020.geojson : etl/shapefiles/tl_2020_28_county20.shp
 	ogr2ogr -f GeoJSON $@ $<
 
-etl/tmp/%.shp : county_borders_2020.zip
+etl/shapefiles/%.shp : county_borders_2020.zip
 	unzip -DD $< -d $(dir $@)
 
 .INTERMEDIATE : county_borders_2020.zip

@@ -51,7 +51,7 @@ for s in surveys:
         if variable in s.exclude:
             continue
         
-        remove = '^(Total!!)|(Estimate!!Total!!)|(Estimate!!)|alone'
+        remove = r'^(Total!!)|(Estimate!!Total!!)|(Estimate!!)|alone'
 
         formatted_label = re.sub(remove, '', label).strip().upper().replace(' ', '_')
 
