@@ -3,3 +3,5 @@
 
 /shapefiles/*
 /output/*
+!/output/.gitkeep
+!/shapefiles/.gitkeep
