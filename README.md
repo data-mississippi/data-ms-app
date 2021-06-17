@@ -28,7 +28,7 @@ Access the Django admin section and JSON APIs at `localhost:8000`, and access th
 ## Docker
 Note, there are multiple Dockerfiles. You might go down a fruitless, frustrating path if, when working locally, you try to edit the Dockerfile in the root directory and expect that to change the Docker image that builds the backend. Until this is changed, heed this wisdom: 
 - `data-ms-app/backend/Dockerfile` manages the Django and ETL dependencies, locally
-- `data-ms-app/backend/Dockerfile` manages the frontend dependencies, locally
+- `data-ms-app/frontend/Dockerfile` manages the frontend dependencies, locally
 - `data-ms-app/Dockerfile` manages both the frontend and backend dependencies, when deployed to Heroku
 
 docker/create-react-app weirdness :(
