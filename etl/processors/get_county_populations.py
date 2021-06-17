@@ -53,7 +53,7 @@ for s in surveys:
         
         remove = '^(Total!!)|(Estimate!!Total!!)|(Estimate!!)|alone'
 
-        formatted_label = re.sub(remove, '', label).strip().upper()
+        formatted_label = re.sub(remove, '', label).strip().upper().replace(' ', '_')
 
         s.labels[variable] = formatted_label
 

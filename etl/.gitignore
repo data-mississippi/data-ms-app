@@ -1,14 +1,1 @@
-*.shp 
-*.dbf 
-*.prj 
-*.shx 
-*.sbn 
-*.sbx
-*.cpg
-*.zip
-*.xml
-*.csv
-*.json
-
-
-__pycache__
+*/__pycache__/*

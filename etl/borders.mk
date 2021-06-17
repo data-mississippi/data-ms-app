@@ -1,8 +1,9 @@
-../frontend/public/geojson/county_borders_2020.geojson: tl_2020_28_county20.shp
+frontend/public/geojson/county_borders_2020.geojson : etl/tmp/%.shp
+	echo "border"
+	echo $<
 	ogr2ogr -f GeoJSON $@ $<
 
-.INTERMEDIATE : tl_2020_28_county20.shp
-tl_2020_28_county20.shp: county_borders_2020.zip
+etl/tmp/%.shp : county_borders_2020.zip
 	unzip -DD $< -d $(dir $@)
 
 .INTERMEDIATE : county_borders_2020.zip
