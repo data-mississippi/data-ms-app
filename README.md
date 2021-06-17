@@ -1,21 +1,20 @@
 # Data Mississippi core app
 This **work in progress** application has two parts: a Django `/backend` with and a React `/frontend`. A Django backend serves JSON and a React frontend. The React frontend gets data from the JSON backend.
 
-Deployment and development is managed by Docker. The Docker build process writes the React files to a static build so the backend can serve the React application. This approach is [based on this guide](https://dev.to/englishcraig/creating-an-app-with-docker-compose-django-and-create-react-app-31lf), with our own quirks to make it work. 
+Deployment and development is managed by Docker. The Docker build process writes the React files to a static build so the backend can serve the React application. This approach is [based on this guide](https://dev.to/englishcraig/creating-an-app-with-docker-compose-django-and-create-react-app-31lf), with our own quirks to make it work.
 
 ## Local Development Setup
 System Requirements:
 - Docker
 
-### Load data
-TODO: make this work...
-```bash
-docker-compose run --rm backend make
-```
-
 ### Build app image
 ```bash
 docker-compose build
+```
+
+### Load data
+```bash
+docker-compose run --rm backend make all
 ```
 
 ### Run the app
@@ -25,6 +24,12 @@ docker-compose up
 
 ### Django and React
 Access the Django admin section and JSON APIs at `localhost:8000`, and access the frontend at `localhost:3000`. (TODO: fix the bugs caused by this.)
+
+## Docker
+Note, there are multiple Dockerfiles. You might go down a fruitless, frustrating path if, when working locally, you try to edit the Dockerfile in the root directory and expect that to change the Docker image that builds the backend. Until this is changed, heed this wisdom: 
+- `data-ms-app/backend/Dockerfile` manages the Django and ETL dependencies, locally
+- `data-ms-app/backend/Dockerfile` manages the frontend dependencies, locally
+- `data-ms-app/Dockerfile` manages both the frontend and backend dependencies, when deployed to Heroku
 
 docker/create-react-app weirdness :(
 - https://stackoverflow.com/questions/60790440/docker-container-exiting-immediately-after-starting-when-using-npm-init-react-ap
