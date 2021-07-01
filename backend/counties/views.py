@@ -3,8 +3,8 @@ from rest_framework import viewsets, status, generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import County, CountyBorderGeoJSON, VotingPrecinct, CountyPopulation
-from .serializers import CountySerializer, CountyBorderSerializer, VotingPrecinctSerializer, CountyPopulationSerializer
+from .models import County, CountyBorderGeoJSON, VotingPrecinct, Population
+from .serializers import CountySerializer, CountyBorderSerializer, PopulationSerializer, VotingPrecinctSerializer
 
 
 class CountyViewSet(viewsets.ModelViewSet):
@@ -53,13 +53,13 @@ def get_all_precincts_for_county(request, county):
 		return HttpResponse(status=404)
 
 
-class CountyPopulationDetail(generics.RetrieveAPIView):
+class PopulationDetail(generics.RetrieveAPIView):
 	"""
 	Returns a county's population details for all years available. 
 	The object is queried by the county's FIPS.
 	"""
 	
 	# TODO: filter by year/survey?
-	queryset = CountyPopulation.objects.all()
-	serializer_class = CountyPopulationSerializer
+	queryset = Population.objects.all()
+	serializer_class = PopulationSerializer
 	lookup_field = 'county'

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import County, CountyBorderGeoJSON, VotingPrecinct, CountyPopulation
+from .models import County, CountyBorderGeoJSON, VotingPrecinct, Population
 
 class CountySerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
@@ -23,9 +23,9 @@ class VotingPrecinctSerializer(serializers.ModelSerializer):
 		fields = ['county_fips', 'geojson', 'name', 'voting_district_code', 'name_area_description']
 
 
-class CountyPopulationSerializer(serializers.ModelSerializer):
+class PopulationSerializer(serializers.ModelSerializer):
 	county_fips = serializers.CharField(source='county.fips', read_only=True)
 
 	class Meta:
-		model = CountyPopulation
+		model = Population
 		fields = '__all__'

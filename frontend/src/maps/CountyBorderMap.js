@@ -52,11 +52,11 @@ function CountyBorderMap({ children, onChooseCounty }) {
     }
 
     useEffect(() => {
-        fetch(`./geojson/county_borders_2020.geojson`, {
+        fetch(`/counties/borders/000/`, {
             headers: {'Accept': 'application/json'}
           }).then((res) => res.json())
             .then((counties) => {
-                setCountyBorders(counties)
+                setCountyBorders(counties.geojson)
             })
 
     }, [setCountyBorders])

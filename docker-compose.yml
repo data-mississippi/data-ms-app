@@ -9,6 +9,7 @@ services:
       - POSTGRES_PASSWORD=ineedtoreadbooksagain
       - POSTGRES_DB=postgres
   backend:
+    restart: always
     build: ./backend
     volumes:
       - ./backend:/app/backend
