@@ -6,7 +6,7 @@ WORKDIR /app/backend
 
 # install psycopg2 dependencies
 RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev
+    && apk add bash curl build-base gdal gdal-tools postgresql-dev gcc python3-dev musl-dev
 
 # Install Python dependencies
 COPY requirements.txt /app/backend

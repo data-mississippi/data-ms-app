@@ -8,8 +8,8 @@ import '../styles/generated-styles.css'
 function MapPlaceholder(message) {
   return (
     <div>
-    <p>{message ? message : 'The map is not working with your browser.'}</p>
-    <p><noscript>You need to enable JavaScript to see this map.</noscript></p>
+      <p>{message ? message : 'The map is not working with your browser.'}</p>
+      <p><noscript>You need to enable JavaScript to see this map.</noscript></p>
     </div>
   )
 }

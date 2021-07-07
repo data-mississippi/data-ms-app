@@ -23,6 +23,13 @@ class County(models.Model):
 		return reverse('county-detail', args=[str(self.fips)])
 
 
+class Population(models.Model):
+	county = models.ForeignKey(County, on_delete=models.CASCADE)
+	year = models.IntegerField()
+	survey = models.CharField(max_length=140)
+	total = models.IntegerField()
+
+
 class BaseGeoJSON(models.Model):
 	"""
 	Base model for storing GeoJSON.
@@ -51,6 +58,8 @@ class VotingPrecinct(BaseGeoJSON):
 	county = models.ForeignKey(County, on_delete=models.CASCADE)
 	name = models.CharField(max_length=140)
 	name_area_description = models.CharField(max_length=280)
+	# year
+	# geojson_boundary
 
 	def __str__(self):
 		return f'{self.name} in {self.county.name}'
