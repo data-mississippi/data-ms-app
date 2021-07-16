@@ -16,10 +16,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         table = options['table']
         input = options['input']
-        
-        # VotingPrecinctGeoJSON.objects.all().delete()
-        # VotingPrecinct.objects.all().delete()
-
 
         if table == 'county':
             County.objects.all().delete()
@@ -56,7 +52,7 @@ class Command(BaseCommand):
                 data = json.load(json_file)
                 
                 # create a single MS county to query the entire map
-                ms = County.objects.create(pk='000')
+                ms, _ = County.objects.get_or_create(pk='000')
                 ms_geo_json = CountyBorderGeoJSON(county=ms, geojson=data)
                 ms_geo_json.save()
                 
@@ -93,6 +89,9 @@ class Command(BaseCommand):
                 print()
                 print('Loaded population!')
                 
+                
+        # TODO: fix voting precinct geojson structure...
+        # this data is not useful as it stands
         if table == 'precincts':
             VotingPrecinctGeoJSON.objects.all().delete()
             VotingPrecinct.objects.all().delete()
@@ -101,6 +100,13 @@ class Command(BaseCommand):
             with open(input) as json_file:
                 data = json.load(json_file)
                 year = data.get('name')[-2:]
+
+                # create a single MS precinct to query the entire map
+                # this needs to change...leftovers from when i was learning
+                ms, _ = County.objects.get_or_create(pk='000')
+                ms_precinct = VotingPrecinct.objects.create(county=ms,
+                                                            geojson=data)
+                
                 for feature in data.get('features'):
                     fip_key = f'COUNTYFP{year}'
                     county_fips = feature['properties'][fip_key]

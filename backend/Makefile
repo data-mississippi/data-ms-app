@@ -1,4 +1,4 @@
-all : county borders population precincts
+all : county borders population
 
 clean : 
 	find etl/shapefiles/ -type f -not -name .gitkeep -delete && \
