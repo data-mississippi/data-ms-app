@@ -42,8 +42,7 @@ class Command(BaseCommand):
                                fips_class=county['fips_class'])
                     c.save()
                     counter += 1
-                print(f'You loaded all {counter} counties into Mississippi !')
-                print()
+                self.stdout.write(self.style.SUCCESS(f'You loaded all {counter} counties into Mississippi !\n'))
             
         if table == 'borders':
             CountyBorderGeoJSON.objects.all().delete()
@@ -68,7 +67,7 @@ class Command(BaseCommand):
                     c = County.objects.get(pk=county_fips)
                     county_geo_json = CountyBorderGeoJSON(county=c, geojson=geo_dict)
                     county_geo_json.save()
-                print('Saved GeoJSON for all of the county borders.')
+                self.stdout.write(self.style.SUCCESS('Saved GeoJSON for all of the county borders.\n'))
                 
         if table == 'population':
             Population.objects.all().delete()
@@ -85,9 +84,7 @@ class Command(BaseCommand):
                             county=county,
                             total=row['Total'],
                         )
-                
-                print()
-                print('Loaded population!')
+                self.stdout.write(self.style.SUCCESS('Loaded population!'))
                 
                 
         # TODO: fix voting precinct geojson structure...
@@ -132,5 +129,4 @@ class Command(BaseCommand):
                         county_geo_json = VotingPrecinctGeoJSON(precinct=new_voting_precinct, geojson=geo_dict)
                         county_geo_json.save()
                         
-            print()
-            print('Loaded GeoJSON for the voting precincts!')
+            self.stdout.write(self.style.SUCCESS('Loaded GeoJSON for the voting precincts!\n'))
