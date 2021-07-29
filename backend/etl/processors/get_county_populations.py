@@ -6,27 +6,6 @@ from dataclasses import asdict
 from survey import Survey
 from ms_census import MississippiCensus
 
-# sf1 = Survey(
-#     survey_key='sf1',
-#     dataset_name='Census Summary File 1',
-#     description='Population by Race',
-#     year=2010,
-#     variable_key='P5',
-#     lookup_key='group(P5)',
-#     exclude=[]
-# )
-
-# acs5 = Survey(
-#     survey_key='acs5',
-#     dataset_name='American Community Survey 5-Year Data (2009-2019)',
-#     description='Population by Race',
-#     year=2019,
-#     variable_key='B02001',
-#     lookup_key='group(B02001)',
-#     variable_ends_with='E',
-#     exclude=['B02001_009E', 'B02001_010E']
-# )
-
 sf1 = Survey(
     survey_key='sf1',
     dataset_name='Census Summary File 1',
@@ -36,17 +15,6 @@ sf1 = Survey(
     lookup_key='group(P1)',
     exclude=['P001001ERR']
 )
-
-# acs5 = Survey(
-#     survey_key='acs5',
-#     dataset_name='American Community Survey 5-Year Data (2009-2019)',
-#     description='Population by Race',
-#     year=2019,
-#     variable_key='B02001',
-#     lookup_key='group(B02001)',
-#     variable_ends_with='E',
-#     exclude=['B02001_009E', 'B02001_010E']
-# )
 
 surveys = [sf1]
 
