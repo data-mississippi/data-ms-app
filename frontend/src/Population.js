@@ -13,7 +13,7 @@ function CountyDetails({ county }) {
 
     return (
         <>
-            <h2 className="text-4xl font-mono text-blue-900">{county['NAME']} County</h2>
+            <h2 className="text-4xl font-mono text-blue-900">{county['NAME20']} County</h2>
 
             <div className="flex justify-around">
                 <div className="text-center rounded-lg border border-blue-900 p-2">
